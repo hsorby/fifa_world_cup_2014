@@ -1,0 +1,18 @@
+{{extend 'layout.html'}}
+
+<h2>
+    {{=pool_match.home_team}} vs. {{=pool_match.away_team}} 
+</h2>
+
+<p>
+    Make your prediction for this match.
+</p>
+
+<form method="POST" action="#">
+    {{for choice in [pool_match.home_team, pool_match.away_team, 'Draw']:}}
+    <div class="well">
+    <input type="radio" name="choice" value="{{=choice}}"/> {{=choice}}
+    </div>
+    {{pass}}            
+    <input type="submit">
+</form>

@@ -1,0 +1,52 @@
+{{extend 'layout.html'}}
+<h2>Welcome to the ABI FIFA <strong>Football</strong> World Cup Competition</h2>
+<p>We would like to run a fun competition over the course of the Football World Cup and I warmly invite you to join us.  If you are interested then simply 
+register and start entering your predictions.  If you think that there should be some rules well we did make some up and you 
+can read about them <a href="/fifa_world_cup_2014/rules">here</a>.</p>
+<p>This competition is open to anybody at the ABI who wishes to enter but limited to the first 100 people (yeah, right!)</p>
+<p>Anything of interest that occurs during this competition as the tournament progresses will appear here.</p>
+<div id="columnA">
+<h2>Leaderboard</h2>
+<p></p>
+<table style="width:300px" id="leaderboard">
+<tr>
+  <th>Name</th>
+  <th>Points</th> 
+</tr>
+{{for i, leader in enumerate(leaderboard):}}
+{{if i%2==0:}}
+<tr>
+{{else:}}
+<tr class="alt">
+{{pass}}
+<td>{{=leader[0]}}</td>
+<td>{{=leader[1]}}</td>
+</tr>
+{{pass}}
+</table>
+<p><strong>Note:</strong> Only entrants who have paid the entry fee will show up on the leaderboard.</p>
+</div>
+<div id="columnB">
+<h2>Our Sponsors</h2>
+<p>
+<a href="http://www.enzuredigital.com/" target="_blank"><img src="/fifa_world_cup_2014/static/plugin_layout_fifa/layouts/fifa/images/feature_graphic.png" width="300" height="150" /></a>
+</p>
+</div>
+<div style="clear: both;">
+</div>
+<h3>The Competition</h3>
+<p>The aim of this competition is to accurately predict the outcome of all the games in the Football World Cup.  Points are 
+scored for correct predictions and the person with the most points at end of the tournament will take home a massive eye-boggling
+prize of some as-yet-undetermined monetary value.</p>
+<p>Predictions are entered via this website under the <a href="/fifa_world_cup_2014/poolgames">Pool Games</a> and <a href="/fifa_world_cup_2014/knockoutgames">Knockout Games</a> pages.  All 
+predictions that are entered before the kickoff time for that match will be considered with the last prediction made before kickoff
+used to score points.</p>
+<p> To make things just a little bit interesting we (the royal we) decided to set an entry fee of $5 and the winner will take 
+home 60% of the total prize pool.  We also decided that some spot prizes would be a good idea and discussions led to setting
+a spot prize of 15% which will be awarded at the end of pool play and a further spot prize of 25% which will be awarded at the end of
+ the tournament to an entrant who has not collected the main prize.
+</p>
+<h3>Disclaimer</h3>
+<p>No responsibility of any sort is accepted by the person or persons associated with this competition, especially if it all 
+goes tits up.</p>
+<p>THE COMPETITION IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>

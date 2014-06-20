@@ -1,0 +1,19 @@
+{{extend 'layout.html'}}
+
+<h2>
+    {{=knockout_match.home_team}} vs. {{=knockout_match.away_team}} 
+</h2>
+
+<p>
+    Make your prediction for this match.
+</p>
+
+<form method="POST" action="#">
+	{{teamnames = [home_team, away_team]}}
+    {{for i, choice in enumerate([knockout_match.home_team, knockout_match.away_team]):}}
+    <div class="well">
+    <input type="radio" name="choice" value="{{=choice}}"/> {{=teamnames[i]}}
+    </div>
+    {{pass}}            
+    <input type="submit">
+</form>

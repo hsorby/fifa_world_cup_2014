@@ -52,3 +52,19 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# Databases
+databases/*_auth*.table
+databases/*_entrant_status.table
+databases/*_predictions.table
+databases/sql.log
+databases/storage.sqlite
+
+# Sessions
+sessions/*
+
+# Errors
+errors/*
+
+# Vim backup files
+*.swp
+

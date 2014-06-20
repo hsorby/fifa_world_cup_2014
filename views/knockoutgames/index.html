@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h2>Enter your predictions</h2>
+<p>Use the predict link on the right to enter a prediction for the match.</p>
+{{if auth.has_membership(group_id='manage'):}}
+{{=A('create new match',_href=URL('create_match'),_class="btn btn-primary")}}
+{{=grid}}
+{{else:}}
+{{=grid}}
+{{pass}}
