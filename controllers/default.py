@@ -35,6 +35,19 @@ def index():
         if row.pool_predictions.prediction == 'Draw':
             full_table[user_id] -= 1
 
+    query = (db.knockout_predictions.match_number == db.knockout_results.match_number) & (db.auth_user.id == db.knockout_predictions.user_id) 
+    left = db.knockout_predictions.on(db.knockout_results.match_result == db.knockout_predictions.prediction)
+    myrows = db(query).select(left=left, groupby=[db.knockout_predictions.user_id, db.knockout_predictions.match_number])
+
+    for row in myrows:
+        user_id = row.knockout_predictions.user_id
+
+        if user_id not in full_table:
+            full_table[user_id] = 0
+            user_name_table[user_id] = row.auth_user.first_name
+
+        full_table[user_id] += 3
+
     sorted_full_table = sorted(full_table.iteritems(), key=operator.itemgetter(1))
     sorted_full_table.reverse()
     
