@@ -60,7 +60,7 @@ def index():
     leaderboard = []
     for entry in sorted_full_table:
         user_id = entry[0]
-        if user_id in eligible and len(leaderboard) < 6:
+        if user_id in eligible:
             leaderboard.append((user_name_table[user_id], entry[1]))
             
     return dict(leaderboard=leaderboard)
