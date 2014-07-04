@@ -21,7 +21,7 @@ def index():
     import datetime
     db.knockout_match.id.readable=False
     db.knockout_match.expires.readable=False
-    original_query = (db.knockout_match.expires >= datetime.datetime.now()) & (db.knockout_predictions.user_id == auth.user_id)
+    query = (db.knockout_match.expires >= datetime.datetime.now()) & (db.knockout_predictions.user_id == auth.user_id)
     test_query = (db.knockout_match.expires >= datetime.datetime.now())
     fields = [db.knockout_match.match_number, db.knockout_home_team_map.teamname, db.knockout_away_team_map.teamname, db.knockout_match.uuid, db.knockout_pred_team_map.teamname]
     headers = {'knockout_match.match_number': 'Match Number',
@@ -35,7 +35,7 @@ def index():
     
     _initialisePredictions()
     
-    grid = SQLFORM.grid(test_query, fields=fields, left=left, headers=headers, groupby=db.knockout_match.match_number,create=False,editable=auth.has_membership('manage'),deletable=False,details=False,
+    grid = SQLFORM.grid(query, fields=fields, left=left, headers=headers, groupby=db.knockout_match.match_number,create=False,editable=auth.has_membership('manage'),deletable=False,details=False,
                         csv=auth.has_membership('manage'), paginate=25,
                         links=[lambda row: A('predict   ',_href=URL('predict_match',args=row.knockout_match.uuid),_class="btn")])
     return locals()
