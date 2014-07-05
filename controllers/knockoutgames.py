@@ -38,6 +38,10 @@ def index():
     grid = SQLFORM.grid(query, fields=fields, left=left, headers=headers, groupby=db.knockout_match.match_number,create=False,editable=auth.has_membership('manage'),deletable=False,details=False,
                         csv=auth.has_membership('manage'), paginate=25,
                         links=[lambda row: A('predict   ',_href=URL('predict_match',args=row.knockout_match.uuid),_class="btn")])
+    
+    old_query = (db.knockout_match.expires < datetime.datetime.now()) & (db.knockout_predictions.user_id == auth.user_id)
+    old_grid = SQLFORM.grid(old_query, fields=fields, left=left, headers=headers, searchable=False, details=False, deletable=False, create=False, paginate=100, csv=False, editable=False)
+
     return locals()
 
 @auth.requires_membership('manage')

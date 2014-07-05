@@ -32,6 +32,10 @@ def index():
                         csv=auth.has_membership('manage'), paginate=25,
                         links=[lambda row: A('predict   ',_href=URL('predict_match',args=row.pool_match.uuid),_class="btn")])
     
+    
+    old_query = (db.pool_match.expires< datetime.datetime.now()) & (db.pool_predictions.user_id == auth.user_id)
+    old_grid = SQLFORM.grid(old_query, fields=fields, left=left, searchable=False, details=False, deletable=False, create=False, paginate=100, csv=False, editable=False)
+
     return locals()
 
 @auth.requires_membership('manage')
