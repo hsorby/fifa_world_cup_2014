@@ -47,6 +47,11 @@ def index():
             user_name_table[user_id] = row.auth_user.first_name
 
         full_table[user_id] += 3
+        
+        if row.knockout_predictions.match_number == 63:
+            full_table[user_id] -= 1
+        if row.knockout_predictions.match_number == 64:
+            full_table[user_id] += 2
 
     sorted_full_table = sorted(full_table.iteritems(), key=operator.itemgetter(1))
     sorted_full_table.reverse()
